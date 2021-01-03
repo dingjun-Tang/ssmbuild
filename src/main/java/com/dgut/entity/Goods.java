@@ -5,14 +5,14 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class ContractItem {
-    private Integer contractItemId;
-    private Integer contractId;
-    private Integer count;
+public class Goods {
     private Integer goodsId;
-    private Integer leaveCount;
+    private String goodsDescription;
+    private String goodsName;
     private Double perPrice;
-    private Double price;
+    private Integer status;
+    private Integer stock;
     private Date createTime;
     private Date updateTime;
+
 }
