@@ -9,6 +9,8 @@ public class TestController {
     @ResponseBody
     @RequestMapping("/test")
     public String test(){
+
+        System.out.println("hello");
         return "Hello World";
     }
 }
