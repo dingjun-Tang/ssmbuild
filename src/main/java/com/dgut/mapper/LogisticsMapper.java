@@ -11,6 +11,8 @@ public interface LogisticsMapper {
 
     //根据LogisticsId查询物流信息
     Logistics getLogisticsByLogisticsId(int logisticsId);
+    //根据LogisticsNo查询物流信息
+    Logistics getLogisticsByLogisticsNo(String logisticsNo);
 
     //增加一个物流信息
     int addLogistics(Logistics logistics);

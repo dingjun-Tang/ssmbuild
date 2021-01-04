@@ -11,6 +11,7 @@ public interface LogisticsService {
 
     //根据LogisticsId查询物流信息
     Logistics getLogisticsByLogisticsId(int logisticsId);
+    Logistics getLogisticsByLogisticsNo(String logisticsNo);
 
     //增加一个物流信息
     int addLogistics(Logistics logistics);

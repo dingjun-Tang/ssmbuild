@@ -1,17 +1,16 @@
 package com.dgut.controller;
 
+import com.dgut.entity.Logistics;
 import com.dgut.entity.Purchase;
 import com.dgut.entity.PurchaseItem;
+import com.dgut.service.LogisticsService;
 import com.dgut.service.PurchaseItemService;
 import com.dgut.service.PurchaseService;
 import com.dgut.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 @RestController
@@ -21,6 +20,8 @@ public class PurchaseController {
     private PurchaseService purchaseService;
     @Autowired
     private PurchaseItemService purchaseItemService;
+    @Autowired
+    LogisticsService logisticsService;
 
     //查询所有采购信息
     @GetMapping("/purchase")
@@ -65,8 +66,8 @@ public class PurchaseController {
     }
 
     //根据purchaseId删除一个采购信息
-    @PostMapping("/purchase/{purchaseID}")
-    public Result deletePurchaseByPurchaseId(@PathVariable("purchaseID") Integer purchaseId){
+    @PostMapping("/purchase/{purchaseId}")
+    public Result deletePurchaseByPurchaseId(@PathVariable("purchaseId") Integer purchaseId){
         int i = purchaseService.deletePurchaseByPurchaseId(purchaseId);
         if(1 == i){
             return Result.success();
@@ -75,4 +76,35 @@ public class PurchaseController {
         }
     }
 
+    @PostMapping("/purchase/{purchaseId}/deliver")
+    public Result deliverPurchaseByPurchaseId(@PathVariable("purchaseId") Integer purchaseId){
+        Purchase purchase = purchaseService.getPurchaseByPurchaseId(purchaseId);
+        if(purchase == null) {
+            throw new RuntimeException("采购清单不存在");
+        }
+        Logistics logistics = new Logistics();
+        logistics.setAddresseeName("甲方");
+        logistics.setAddresseePhone("13546273647");
+        logistics.setAddresseeAddress("广东省东莞市松山湖");
+        logistics.setSenderName("乙方");
+        logistics.setSenderPhone("13546273647");
+        logistics.setSenderAddress("广东省东莞市大岭山");
+        logistics.setCompanyName("顺丰");
+        String logisticsNo = new Date().toString();
+        logistics.setLogisticsNo(logisticsNo);
+        int i = logisticsService.addLogistics(logistics);
+        if(i == 0) {
+            throw new RuntimeException("新增物流信息异常");
+        }
+        Logistics logistics1 = logisticsService.getLogisticsByLogisticsNo(logisticsNo);
+        Integer logisticsId = logistics1.getLogisticsId();
+        purchase.setLogisticsId(logisticsId);
+        purchase.setDeliverStatus(1);
+        int i1 = purchaseService.updatePurchaseByPurchaseId(purchase);
+        if(i1 > 0) {
+            return Result.success();
+        }else{
+            throw new RuntimeException("更新采购清单信息异常");
+        }
+    }
 }

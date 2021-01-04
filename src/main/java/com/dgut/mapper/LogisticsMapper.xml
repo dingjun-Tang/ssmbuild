@@ -17,11 +17,15 @@
     <select id="getLogisticsByLogisticsId" parameterType="int" resultType="com.dgut.entity.Logistics">
         select * from sale_system_dj.logistics where logistics_id = #{logisticsId}
     </select>
+    <!--根据LogisticsNo查询物流信息-->
+    <select id="getLogisticsByLogisticsNo" parameterType="string" resultType="com.dgut.entity.Logistics">
+        select * from sale_system_dj.logistics where logistics_no = #{logisticsNo}
+    </select>
 
     <!--增加一个物流信息-->
     <insert id="addLogistics" parameterType="com.dgut.entity.Logistics">
-        insert into sale_system_dj.logistics(create_time, update_time, addressee_address, addressee_name, addressee_phone, company_name, logistics_no, sender_address, sender_name, sender_phone)
-            value (#{createTime},#{updateTime},#{addresseeAddress},#{addresseeName},#{addresseePhone},#{companyName},#{logisticsNo},#{senderAddress},#{senderName},#{senderPhone});
+        insert into sale_system_dj.logistics(addressee_address, addressee_name, addressee_phone, company_name, logistics_no, sender_address, sender_name, sender_phone)
+            value (#{addresseeAddress},#{addresseeName},#{addresseePhone},#{companyName},#{logisticsNo},#{senderAddress},#{senderName},#{senderPhone});
     </insert>
 
     <!--根据LogisticsId修改物流信息-->

@@ -2,15 +2,15 @@ package com.dgut.service;
 
 import com.dgut.entity.Logistics;
 import com.dgut.mapper.LogisticsMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class LogisticsServiceImpl implements LogisticsService{
 
-    @Resource
+    @Autowired
     private LogisticsMapper logisticsMapper;
 
     public List<Logistics> getLogisticsList() {
@@ -19,6 +19,9 @@ public class LogisticsServiceImpl implements LogisticsService{
 
     public Logistics getLogisticsByLogisticsId(int logisticsId) {
         return logisticsMapper.getLogisticsByLogisticsId(logisticsId);
+    }
+    public Logistics getLogisticsByLogisticsNo(String logisticsNo) {
+        return logisticsMapper.getLogisticsByLogisticsNo(logisticsNo);
     }
 
     public int addLogistics(Logistics logistics) {
