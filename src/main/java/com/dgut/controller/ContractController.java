@@ -1,11 +1,14 @@
 package com.dgut.controller;
 
 import com.dgut.entity.Contract;
+import com.dgut.entity.ContractItem;
+import com.dgut.service.ContractItemService;
 import com.dgut.service.ContractService;
 import com.dgut.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +17,8 @@ import java.util.Map;
 public class ContractController {
     @Autowired
     private ContractService contractService;
+    @Autowired
+    private ContractItemService contractItemService;
 
 
     /**
@@ -85,5 +90,35 @@ public class ContractController {
             return Result.error();
         }
     }
+
+    /**
+     * 批量插入合同商品信息列表
+     * @param contractItemList
+     * @return
+     */
+    @PostMapping("/contract/saveContractItemList")
+    public Result saveContractItemList(@RequestBody ContractItem[] contractItemList){
+        int i = contractItemService.saveContractItemList(Arrays.asList(contractItemList.clone()));
+        if(1 == i){
+            return Result.success();
+        }else{
+            return Result.error();
+        }
+    }
+    /**
+     * 批量更新合同商品信息列表
+     * @param contractItemList
+     * @return
+     */
+    @PutMapping("/contract/updateContractItemList")
+    public Result updateContractItemList(@RequestBody ContractItem[] contractItemList){
+        int i = contractItemService.updateContractItemList(Arrays.asList(contractItemList.clone()));
+        if(1 == i){
+            return Result.success();
+        }else{
+            return Result.error();
+        }
+    }
+
 
 }

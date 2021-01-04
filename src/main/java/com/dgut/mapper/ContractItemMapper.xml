@@ -35,4 +35,34 @@
         delete from sale_system_dj.contract_item where contract_item_id = #{contractItemId}
     </delete>
 
+    <insert id ="insertContractItemList" parameterType="java.util.List" >
+        insert into sale_system_dj.contract_item (contract_id, count, goods_id, leave_count, per_price, price) values
+        <foreach collection ="list" item="item" index= "index" separator =",">
+            (
+                #{item.contractId},
+                #{item.count},
+                #{item.goodsId},
+                #{item.leaveCount},
+                #{item.perPrice},
+                #{item.price}
+            )
+        </foreach >
+    </insert >
+
+    <update id="updateContractItemList" parameterType="java.util.ArrayList">
+        <foreach close=";" collection="list" index="index" item="item" open="" separator=";">
+            update sale_system_dj.contract_item
+            <trim prefix="set" suffixOverrides=",">
+                <if test="item.count != null">count = #{item.count},</if>
+                <if test="item.leaveCount != null">leave_count = #{item.leaveCount},</if>
+                <if test="item.perPrice != null">per_price = #{item.perPrice},</if>
+                <if test="item.price != null">price = #{item.price},</if>
+                <if test="item.contractId != null">contract_id = #{item.contractId},</if>
+                update_time = now(),
+                <if test="item.goodsId != null">goods_id = #{item.goodsId},</if>
+            </trim>
+            <where>contract_item_id = #{item.contractItemId}</where>
+        </foreach>
+    </update>
+
 </mapper>

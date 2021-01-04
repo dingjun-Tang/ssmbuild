@@ -2,15 +2,15 @@ package com.dgut.service;
 
 import com.dgut.entity.ContractItem;
 import com.dgut.mapper.ContractItemMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class ContractItemServiceImpl implements ContractItemService{
 
-    @Resource
+    @Autowired
     private ContractItemMapper contractItemMapper;
 
     public List<ContractItem> getContractItemList() {
@@ -31,5 +31,13 @@ public class ContractItemServiceImpl implements ContractItemService{
 
     public int deleteContractItemByContractItemId(int contractItemId) {
         return contractItemMapper.deleteContractItemByContractItemId(contractItemId);
+    }
+
+    public int saveContractItemList(List<ContractItem> contractItemList) {
+        return contractItemMapper.insertContractItemList(contractItemList);
+    }
+
+    public int updateContractItemList(List<ContractItem> contractItemList) {
+        return contractItemMapper.updateContractItemList(contractItemList);
     }
 }

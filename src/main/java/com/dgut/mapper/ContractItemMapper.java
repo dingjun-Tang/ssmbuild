@@ -20,4 +20,8 @@ public interface ContractItemMapper {
 
     //根据contractItemId删除一个合同-商品信息
     int deleteContractItemByContractItemId(int contractItemId);
+    // 批量更新合同商品信息
+    int updateContractItemList(List<ContractItem> contractItemList);
+    // 批量新增合同商品信息
+    int insertContractItemList(List<ContractItem> contractItemList);
 }
