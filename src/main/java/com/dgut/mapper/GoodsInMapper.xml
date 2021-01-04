@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--1、namespace=绑定一个对应的Mapper接口！！！-->
+<mapper namespace="com.dgut.mapper.GoodsInMapper">
+
+
+    <!--查询所有商品-物流信息-->
+    <select id="getGoodsIntList" resultType="com.dgut.entity.GoodsIn">
+        select * from sale_system_dj.goods_in
+    </select>
+
+    <!--根据goodsInId查询商品-物流信息-->
+    <select id="getGoodsInByGoodsInId" parameterType="int" resultType="com.dgut.entity.GoodsIn">
+        select * from sale_system_dj.goods_in where goods_in_id = #{goodsInId}
+    </select>
+
+    <!--增加一个商品-物流信息-->
+    <insert id="addGoodsIn" parameterType="com.dgut.entity.GoodsIn">
+        insert into sale_system_dj.goods_in(goods_in_id, create_time, update_time, count, goods_id, remark, status, logistics_id)
+        value (#{goodsInId},#{createTime},#{updateTime},#{count},#{goodsId},#{remark},#{status},#{logisticsId})
+    </insert>
+
+    <!--根据goodsInId修改商品-物流信息-->
+    <update id="updateGoodsInByGoodsInId" parameterType="com.dgut.entity.GoodsIn">
+        update sale_system_dj.goods_in
+        set count=#{count},goods_id=#{goodsId},remark=#{remark},status=#{status},logistics_id=#{logisticsId},update_time=#{updateTime}
+        where goods_in_id=#{goodsInId}
+    </update>
+
+    <!--根据goodsInId删除一个商品-物流信息-->
+    <delete id="deleteGoodsInByGoodsInId" parameterType="int">
+        delete from sale_system_dj.goods_in where goods_in_id = #{goodsInId}
+    </delete>
+
+</mapper>

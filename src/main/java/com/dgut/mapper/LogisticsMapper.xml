@@ -26,7 +26,7 @@
 
     <!--根据LogisticsId修改物流信息-->
     <update id="updateLogisticsByLogisticsId" parameterType="com.dgut.entity.Logistics">
-        update sale_system_dj.logistics set addressee_address=#{addresseeAddress},addressee_name=#{addresseeName},addressee_phone=#{addresseePhone},company_name=#{companyName},logistics_no=#{logisticsNo},sender_address=#{senderAddress},sender_name=#{senderName},sender_phone=#{senderPhone},create_time=#{createTime},update_time=#{updateTime} where logistics_id =#{logisticsId}
+        update sale_system_dj.logistics set addressee_address=#{addresseeAddress},addressee_name=#{addresseeName},addressee_phone=#{addresseePhone},company_name=#{companyName},logistics_no=#{logisticsNo},sender_address=#{senderAddress},sender_name=#{senderName},sender_phone=#{senderPhone},update_time=#{updateTime} where logistics_id =#{logisticsId}
     </update>
 
     <!--根据logisticsId删除一个物流信息-->

@@ -27,7 +27,9 @@
 
     <!--修改合同信息-->
     <update id="updateContractByContractId" parameterType="com.dgut.entity.Contract">
-        update sale_system_dj.contract set contract_name=#{contractName},contract_no=#{contractNo},first_party=#{firstParty},second_party=#{secondParty},status=#{status},update_time=#{updateTime} where contract_id=#{contractId}
+        update sale_system_dj.contract
+        set contract_name=#{contractName},contract_no=#{contractNo},first_party=#{firstParty},second_party=#{secondParty},status=#{status},update_time=#{updateTime}
+        where contract_id=#{contractId}
     </update>
 
     <!--根据ID删除一个合同-->

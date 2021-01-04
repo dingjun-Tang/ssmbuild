@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--1、namespace=绑定一个对应的Mapper接口！！！-->
+<mapper namespace="com.dgut.mapper.GoodsMapper">
+
+
+    <!--查询所有商品-->
+    <select id="getGoodsList" resultType="com.dgut.entity.Goods">
+        select * from sale_system_dj.goods
+    </select>
+
+    <!--根据goodsId查询商品-->
+    <select id="getGoodsByGoodsId" parameterType="int" resultType="com.dgut.entity.Goods">
+        select * from sale_system_dj.goods where goods_id = #{goodsId}
+    </select>
+
+    <!--增加一个商品-->
+    <insert id="addGoods" parameterType="com.dgut.entity.Goods">
+        insert into sale_system_dj.goods(goods_id, create_time, update_time, goodsDescription, goodsName, per_price, status, stock)
+        VALUE (#{goodsId},#{createTime},#{updateTime},#{goodsDescription},#{goodsName},#{perPrice},#{status},#{stock});
+    </insert>
+
+    <!--根据goodsId修改商品信息-->
+    <update id="updateGoodsByGoodsId" parameterType="com.dgut.entity.Goods">
+        update sale_system_dj.goods
+        set goodsDescription=#{goodsDescription},goodsName=#{goodsName},per_price=#{perPrice},status=#{status},stock=#{stock},update_time=#{updateTime}
+        where goods_id=#{goodsId}
+    </update>
+
+    <!--根据goodsId删除一个商品-->
+    <delete id="deleteGoodsByGoodsId" parameterType="int">
+        delete from sale_system_dj.goods where goods_id = #{goodsId}
+    </delete>
+
+</mapper>

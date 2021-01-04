@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--1、namespace=绑定一个对应的Mapper接口！！！-->
+<mapper namespace="com.dgut.mapper.PurchaseMapper">
+
+
+    <!--查询所有采购信息-->
+    <select id="getPurchaseList" resultType="com.dgut.entity.Purchase">
+        select * from sale_system_dj.purchase
+    </select>
+
+    <!--根据purchaseId查询采购信息-->
+    <select id="getPurchaseByPurchaseId" parameterType="int" resultType="com.dgut.entity.Purchase">
+        select * from sale_system_dj.purchase where purchase_id = #{purchaseId}
+    </select>
+
+    <!--增加一个采购信息-->
+    <insert id="addPurchase" parameterType="com.dgut.entity.Purchase">
+        insert into sale_system_dj.purchase(purchase_id, purchase_no, create_time, update_time, contract_id, customer_id, deliver_status, logistics_id, pay_status, total_price, user_id)
+        VALUE (#{purchaseId},#{purchaseNo},#{createTime},#{updateTime},#{contractId},#{customerId},#{deliverStatus},#{logisticsId},#{payStatus},#{totalPrice},#{userId});
+    </insert>
+
+    <!--根据purchaseId修改采购信息-->
+    <update id="updatePurchaseByPurchaseId" parameterType="com.dgut.entity.Purchase">
+        update sale_system_dj.purchase set purchase_no=#{purchaseNo},contract_id=#{contractId},customer_id=#{customerId},deliver_status=#{deliverStatus},logistics_id=#{logisticsId},pay_status=#{payStatus},total_price=#{totalPrice},user_id=#{userId},update_time=#{updateTime} where purchase_id =#{purchaseId}
+    </update>
+
+    <!--根据purchaseId删除一个采购信息-->
+    <delete id="deletePurchaseByPurchaseId" parameterType="int">
+        delete from sale_system_dj.purchase where purchase_id = #{purchaseId}
+    </delete>
+
+</mapper>

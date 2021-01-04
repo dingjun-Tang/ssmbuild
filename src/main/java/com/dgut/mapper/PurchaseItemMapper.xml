@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--1、namespace=绑定一个对应的Mapper接口！！！-->
+<mapper namespace="com.dgut.mapper.PurchaseItemMapper">
+
+
+    <!--查询所有采购-商品清单-->
+    <select id="getPurchaseItemList" resultType="com.dgut.entity.PurchaseItem">
+        select * from sale_system_dj.purchase_item
+    </select>
+
+    <!--根据purchaseItemId查询采购-商品清单-->
+    <select id="getPurchaseItemByPurchaseItemId" parameterType="int" resultType="com.dgut.entity.PurchaseItem">
+        select * from sale_system_dj.purchase_item where purchase_item_id = #{purchaseItemId}
+    </select>
+
+    <!--增加一个采购-商品清单-->
+    <insert id="addPurchaseItem" parameterType="com.dgut.entity.PurchaseItem">
+        insert into sale_system_dj.purchase_item(purchase_item_id, create_time, update_time, count, goods_id, per_price, price, purchase_id)
+        VALUE (#{purchaseItemId},#{createTime},#{updateTime},#{count},#{goodsId},#{perPrice},#{price},#{purchaseId})
+    </insert>
+
+    <!--根据purchaseItemId修改采购-商品清单-->
+    <update id="updatePurchaseItemByPurchaseItemId" parameterType="com.dgut.entity.PurchaseItem">
+        update sale_system_dj.purchase_item
+        set count=#{count},goods_id=#{goodsId},per_price=#{perPrice},price=#{price},purchase_id=#{purchaseId},update_time=#{updateTime}
+        where purchase_item_id=#{purchaseItemId}
+    </update>
+
+    <!--根据purchaseItemId删除一个采购-商品清单-->
+    <delete id="deletePurchaseItemByPurchaseItemId" parameterType="int">
+        delete from sale_system_dj.purchase_item where purchase_item_id = #{purchaseItemId}
+    </delete>
+
+</mapper>

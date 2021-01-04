@@ -26,7 +26,7 @@
 
     <!--修改客户信息-->
     <update id="updateCustomerByCustomerId" parameterType="com.dgut.entity.Customer">
-        update sale_system_dj.customer set address=#{address},email=#{email},name=#{name},phone=#{phone},user_id=#{userId},create_time=#{createTime},update_time=#{updateTime} where customer_id=#{customerId}
+        update sale_system_dj.customer set address=#{address},email=#{email},name=#{name},phone=#{phone},user_id=#{userId},update_time=#{updateTime} where customer_id=#{customerId}
     </update>
 
     <!--根据customerId删除一个客户信息-->
