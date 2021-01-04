@@ -3,7 +3,6 @@ package com.dgut.controller;
 import com.dgut.entity.Role;
 import com.dgut.service.RoleService;
 import com.dgut.util.Result;
-import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@Api(tags="角色控制器")
 public class RoleController {
 
     @Autowired
@@ -51,17 +49,6 @@ public class RoleController {
     @PutMapping("/role")
     public Result updateRoleByRoleId(@RequestBody Role role){
         int i = roleService.updateRoleByRoleId(role);
-        if(1 == i){
-            return Result.success();
-        }else{
-            return Result.error();
-        }
-    }
-
-    //根据RoleId删除一个角色
-    @PostMapping("/role")
-    public Result deleteContractByContractId(@RequestParam Integer roleId){
-        int i = roleService.deleteRoleByRoleId(roleId);
         if(1 == i){
             return Result.success();
         }else{
