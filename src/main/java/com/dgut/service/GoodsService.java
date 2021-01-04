@@ -21,4 +21,7 @@ public interface GoodsService {
     //根据goodsId删除一个商品
     int deleteGoodsByGoodsId(int goodsId);
 
+    //批量更新商品列表
+    public int updateGoodsList(List<Goods> goodsList);
+
 }

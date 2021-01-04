@@ -17,6 +17,10 @@
     <select id="getPurchaseByPurchaseId" parameterType="int" resultType="com.dgut.entity.Purchase">
         select * from sale_system_dj.purchase where purchase_id = #{purchaseId}
     </select>
+    <!--根据purchaseNo查询采购信息-->
+    <select id="getPurchaseByPurchaseNo" parameterType="int" resultType="com.dgut.entity.Purchase">
+        select * from sale_system_dj.purchase where purchase_no = #{purchaseNo}
+    </select>
 
     <!--增加一个采购信息-->
     <insert id="addPurchase" parameterType="com.dgut.entity.Purchase">

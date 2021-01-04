@@ -12,6 +12,8 @@ public interface PurchaseMapper {
     //根据purchaseId查询采购信息
     Purchase getPurchaseByPurchaseId(int purchaseId);
 
+    Purchase getPurchaseByPurchaseNo(String purchaseNo);
+
     //增加一个采购信息
     int addPurchase(Purchase purchase);
 

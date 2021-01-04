@@ -1,11 +1,14 @@
 package com.dgut.controller;
 
 import com.dgut.entity.Purchase;
+import com.dgut.entity.PurchaseItem;
+import com.dgut.service.PurchaseItemService;
 import com.dgut.service.PurchaseService;
 import com.dgut.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +19,8 @@ public class PurchaseController {
 
     @Autowired
     private PurchaseService purchaseService;
+    @Autowired
+    private PurchaseItemService purchaseItemService;
 
     //查询所有采购信息
     @GetMapping("/purchase")
@@ -37,9 +42,11 @@ public class PurchaseController {
 
     //增加一个采购信息
     @PostMapping("/purchase")
-    public Result addPurchase(@RequestBody Purchase purchase){
-        int i = purchaseService.addPurchase(purchase);
-        if(1 == i){
+    public Result addPurchase(@RequestBody Purchase purchase, @RequestBody PurchaseItem[] purchaseItemList){
+        Purchase purchase1 = purchaseService.addPurchase(purchase);
+        if(purchase1 != null){
+            Integer purchaseId = purchase1.getPurchaseId();
+            purchaseItemService.savePurchaseItemList(purchaseId, Arrays.asList(purchaseItemList));
             return Result.success();
         }else{
             return Result.error();

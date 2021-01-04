@@ -13,7 +13,7 @@ public interface PurchaseService {
     Purchase getPurchaseByPurchaseId(int purchaseId);
 
     //增加一个采购信息
-    int addPurchase(Purchase purchase);
+    Purchase addPurchase(Purchase purchase);
 
     //根据purchaseId修改采购信息
     int updatePurchaseByPurchaseId(Purchase purchase);

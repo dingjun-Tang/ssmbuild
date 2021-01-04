@@ -35,5 +35,18 @@
     <delete id="deletePurchaseItemByPurchaseItemId" parameterType="int">
         delete from sale_system_dj.purchase_item where purchase_item_id = #{purchaseItemId}
     </delete>
+    <!--批量新增-->
+    <insert id ="insertPurchaseItemList" parameterType="java.util.List" >
+        insert into sale_system_dj.purchase_item (purchase_id, count, goods_id, per_price, price) values
+        <foreach collection ="list" item="item" index= "index" separator =",">
+            (
+            #{item.purchase_id},
+            #{item.count},
+            #{item.goodsId},
+            #{item.perPrice},
+            #{item.price}
+            )
+        </foreach>
+    </insert >
 
 </mapper>

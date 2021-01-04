@@ -2,15 +2,15 @@ package com.dgut.service;
 
 import com.dgut.entity.Goods;
 import com.dgut.mapper.GoodsMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class GoodsServiceImpl implements GoodsService{
 
-    @Resource
+    @Autowired
     private GoodsMapper goodsMapper;
 
     public List<Goods> getGoodsList() {
@@ -31,5 +31,9 @@ public class GoodsServiceImpl implements GoodsService{
 
     public int deleteGoodsByGoodsId(int goodsId) {
         return goodsMapper.deleteGoodsByGoodsId(goodsId);
+    }
+
+    public int updateGoodsList(List<Goods> goodsList) {
+        return goodsMapper.updateGoodsList(goodsList);
     }
 }

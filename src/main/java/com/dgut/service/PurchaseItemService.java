@@ -19,4 +19,6 @@ public interface PurchaseItemService {
 
     //根据purchaseItemId删除一个采购-商品清单
     int deletePurchaseItemByPurchaseItemId(int purchaseItemId);
+    //批量新增purchaseItem信息
+    public int savePurchaseItemList(Integer purchaseId, List<PurchaseItem> purchaseItemList);
 }

@@ -2,15 +2,15 @@ package com.dgut.service;
 
 import com.dgut.entity.Contract;
 import com.dgut.mapper.ContractMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class ContractServiceImpl implements ContractService{
 
-    @Resource
+    @Autowired
     private ContractMapper contractMapper;
 
     public List<Contract> getContractList() {

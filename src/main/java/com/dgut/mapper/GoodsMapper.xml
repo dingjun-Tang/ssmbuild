@@ -36,4 +36,19 @@
         delete from sale_system_dj.goods where goods_id = #{goodsId}
     </delete>
 
+    <update id="updateGoodsList" parameterType="java.util.ArrayList">
+        <foreach close=";" collection="list" index="index" item="item" open="" separator=";">
+            update sale_system_dj.goods
+            <trim prefix="set" suffixOverrides=",">
+                <if test="item.goodsName != null">goodsName = #{item.goodsName},</if>
+                <if test="item.goodsDescription != null">goodsDescription = #{item.goodsDescription},</if>
+                <if test="item.stock != null">stock = #{item.stock},</if>
+                <if test="item.perPrice != null">per_price = #{item.perPrice},</if>
+                <if test="item.status != null">status = #{item.status},</if>
+                update_time = now(),
+            </trim>
+            <where>goods_id = #{item.goodsId}</where>
+        </foreach>
+    </update>
+
 </mapper>

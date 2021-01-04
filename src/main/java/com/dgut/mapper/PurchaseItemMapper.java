@@ -20,5 +20,6 @@ public interface PurchaseItemMapper {
 
     //根据purchaseItemId删除一个采购-商品清单
     int deletePurchaseItemByPurchaseItemId(int purchaseItemId);
-
+    //批量新增purchaseItem数据
+    int insertPurchaseItemList(List<PurchaseItem> purchaseItemList);
 }
