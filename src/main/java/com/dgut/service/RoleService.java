@@ -1,10 +1,11 @@
-package com.dgut.mapper;
+package com.dgut.service;
 
 import com.dgut.entity.Role;
 
 import java.util.List;
 
-public interface RoleMapper {
+public interface RoleService {
+
 
     //查询所有角色
     List<Role> getRoleList();
@@ -20,5 +21,6 @@ public interface RoleMapper {
 
     //根据RoleId删除一个角色
     int deleteRoleByRoleId(int roleId);
+
 
 }

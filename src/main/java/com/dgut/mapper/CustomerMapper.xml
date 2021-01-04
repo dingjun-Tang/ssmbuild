@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--1、namespace=绑定一个对应的Mapper接口！！！-->
+<mapper namespace="com.dgut.mapper.CustomerMapper">
+
+
+    <!--查询所有客户-->
+    <select id="getCustomerList" resultType="com.dgut.entity.Customer">
+        select * from sale_system_dj.customer
+    </select>
+
+    <!--根据customerId查询客户-->
+    <select id="getCustomerByCustomerId" parameterType="int" resultType="com.dgut.entity.Customer">
+        select * from sale_system_dj.customer where customer_id = #{customerId}
+    </select>
+
+    <!--增加一个客户-->
+    <insert id="addCustomer" parameterType="com.dgut.entity.Customer">
+        insert into sale_system_dj.customer(customer_id,create_time, update_time, address, email, name, phone, user_id)
+        value (#{customerId},#{createTime},#{updateTime},#{address},#{email},#{name},#{phone},#{user_id});
+    </insert>
+
+    <!--修改客户信息-->
+    <update id="updateCustomerByCustomerId" parameterType="com.dgut.entity.Customer">
+        update sale_system_dj.customer set address=#{address},email=#{email},name=#{name},phone=#{phone},user_id=#{userId},create_time=#{createTime},update_time=#{updateTime} where customer_id=#{customerId}
+    </update>
+
+    <!--根据customerId删除一个客户信息-->
+    <delete id="deleteCustomerByCustomerId" parameterType="int">
+        delete from sale_system_dj.customer where customer_id = #{customerId}
+    </delete>
+
+</mapper>

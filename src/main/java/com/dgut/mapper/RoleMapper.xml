@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--1、namespace=绑定一个对应的Mapper接口！！！-->
+<mapper namespace="com.dgut.mapper.RoleMapper">
+
+    <!--查询所有用户-->
+    <select id="getRoleList" resultType="com.dgut.entity.Role">
+        select * from sale_system_dj.role
+    </select>
+
+    <!--根据uid查询用户-->
+    <select id="getRoleByRoleId" parameterType="int" resultType="com.dgut.entity.Role">
+        select * from sale_system_dj.role where role_id=#{roleId}
+    </select>
+
+    <!--增加一个用户-->
+    <insert id="addRole" parameterType="com.dgut.entity.Role">
+        insert into sale_system_dj.role(role_id, name, description)
+        VALUE (#{roleId},#{name},#{description})
+    </insert>
+
+    <!--修改用户信息-->
+    <update id="updateRoleByRoleId" parameterType="com.dgut.entity.Role">
+        update sale_system_dj.role set name=#{name},description=#{description} where role_id=#{roleId}
+    </update>
+
+    <!--根据uid删除一个用户-->
+    <delete id="deleteRoleByRoleId" parameterType="int">
+        delete from sale_system_dj.role where role_id=#{roleId}
+    </delete>
+
+</mapper>
