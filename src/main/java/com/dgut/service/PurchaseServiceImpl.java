@@ -2,10 +2,12 @@ package com.dgut.service;
 
 import com.dgut.entity.Purchase;
 import com.dgut.mapper.PurchaseMapper;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+@Service
 public class PurchaseServiceImpl implements PurchaseService{
 
     @Resource

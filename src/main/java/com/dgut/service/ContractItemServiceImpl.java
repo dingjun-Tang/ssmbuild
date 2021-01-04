@@ -2,10 +2,12 @@ package com.dgut.service;
 
 import com.dgut.entity.ContractItem;
 import com.dgut.mapper.ContractItemMapper;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+@Service
 public class ContractItemServiceImpl implements ContractItemService{
 
     @Resource

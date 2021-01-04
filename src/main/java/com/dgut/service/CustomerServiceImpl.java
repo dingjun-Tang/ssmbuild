@@ -2,10 +2,12 @@ package com.dgut.service;
 
 import com.dgut.entity.Customer;
 import com.dgut.mapper.CustomerMapper;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+@Service
 public class CustomerServiceImpl implements CustomerService{
 
     @Resource

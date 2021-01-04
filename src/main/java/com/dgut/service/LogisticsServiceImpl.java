@@ -2,10 +2,12 @@ package com.dgut.service;
 
 import com.dgut.entity.Logistics;
 import com.dgut.mapper.LogisticsMapper;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+@Service
 public class LogisticsServiceImpl implements LogisticsService{
 
     @Resource

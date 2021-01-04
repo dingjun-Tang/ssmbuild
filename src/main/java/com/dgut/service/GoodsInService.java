@@ -4,6 +4,7 @@ import com.dgut.entity.GoodsIn;
 
 import java.util.List;
 
+
 public interface GoodsInService {
 
     //查询所有商品-物流信息
