@@ -2,10 +2,12 @@ package com.dgut.service;
 
 import com.dgut.entity.User;
 import com.dgut.mapper.UserMapper;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+@Service
 public class UserServiceImpl implements UserService {
 
     @Resource
