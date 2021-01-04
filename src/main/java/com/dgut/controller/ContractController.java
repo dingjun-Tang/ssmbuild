@@ -5,6 +5,7 @@ import com.dgut.entity.ContractItem;
 import com.dgut.service.ContractItemService;
 import com.dgut.service.ContractService;
 import com.dgut.util.Result;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@Api(tags="合同控制器")
 public class ContractController {
     @Autowired
     private ContractService contractService;

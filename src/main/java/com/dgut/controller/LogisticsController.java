@@ -4,6 +4,7 @@ package com.dgut.controller;
 import com.dgut.entity.Logistics;
 import com.dgut.service.LogisticsService;
 import com.dgut.util.Result;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@Api(tags="物流控制器")
 public class LogisticsController {
 
     @Autowired

@@ -7,6 +7,7 @@ import com.dgut.service.LogisticsService;
 import com.dgut.service.PurchaseItemService;
 import com.dgut.service.PurchaseService;
 import com.dgut.util.Result;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,7 @@ import java.util.*;
 
 
 @RestController
+@Api(tags="采购清单控制器")
 public class PurchaseController {
 
     @Autowired

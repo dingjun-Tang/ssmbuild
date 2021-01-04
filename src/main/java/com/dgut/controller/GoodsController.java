@@ -3,6 +3,7 @@ package com.dgut.controller;
 import com.dgut.entity.Goods;
 import com.dgut.service.GoodsService;
 import com.dgut.util.Result;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@Api(tags="商品控制器")
 public class GoodsController {
     @Autowired
     private GoodsService goodsService;
