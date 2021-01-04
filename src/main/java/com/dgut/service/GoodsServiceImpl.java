@@ -21,6 +21,10 @@ public class GoodsServiceImpl implements GoodsService{
         return goodsMapper.getGoodsByGoodsId(goodsId);
     }
 
+    public List<Goods> getGoodsByGoodsIdList(List<Integer> goodsIdList) {
+        return goodsMapper.getGoodsByGoodsIdList(goodsIdList);
+    }
+
     public int addGoods(Goods goods) {
         return goodsMapper.addGoods(goods);
     }

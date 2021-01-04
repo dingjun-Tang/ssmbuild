@@ -23,4 +23,6 @@ public interface GoodsMapper {
 
     int updateGoodsList(List<Goods> goodsList);
 
+    List<Goods> getGoodsByGoodsIdList(List<Integer> goodsIdList);
+
 }

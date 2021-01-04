@@ -12,6 +12,9 @@ public interface GoodsService {
     //根据goodsId查询商品
     Goods getGoodsByGoodsId(int goodsId);
 
+    //根据goodsIdList查询商品详细信息列表
+    public List<Goods> getGoodsByGoodsIdList(List<Integer> goodsIdList);
+
     //增加一个商品
     int addGoods(Goods goods);
 
