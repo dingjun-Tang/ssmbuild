@@ -1,9 +1,11 @@
 package com.dgut.entity;
 
 import lombok.Data;
+import org.apache.ibatis.type.Alias;
 
 import java.util.Date;
 
+@Alias("goods")
 @Data
 public class Goods {
     private Integer goodsId;

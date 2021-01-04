@@ -26,6 +26,6 @@
 <!--    配置dao接口扫描包-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        <property name="basePackage" value="com.com.dgut.mapper"/>
+        <property name="basePackage" value="com.dgut.mapper"/>
     </bean>
 </beans>

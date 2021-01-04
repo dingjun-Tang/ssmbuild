@@ -2,11 +2,13 @@ package com.dgut.entity;
 
 
 import lombok.Data;
+import org.apache.ibatis.type.Alias;
 
 import java.util.Date;
 
+@Alias("purchase")
 @Data
-public class purchase {
+public class Purchase {
     private Integer purchaseId;
     private String purchaseNo;
     private Integer contractId;

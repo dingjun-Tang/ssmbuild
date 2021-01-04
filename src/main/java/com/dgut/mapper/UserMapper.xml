@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--1、namespace=绑定一个对应的Mapper接口！！！-->
+<mapper namespace="com.dgut.mapper.UserMapper">
+
+    <!--查询所有用户-->
+    <select id="getUserList" resultType="com.dgut.entity.User">
+        select * from sale_system_dj.user
+    </select>
+
+    <!--根据uid查询用户-->
+    <select id="getUserByUserId" parameterType="int" resultType="com.dgut.entity.User">
+        select * from sale_system_dj.user where user_id=#{userId}
+    </select>
+
+    <!--增加一个用户-->
+    <insert id="addUser" parameterType="com.dgut.entity.User">
+        insert into sale_system_dj.user(user_id, create_time, update_time, password, username, avatar)
+        VALUE (#{userId},#{createTime},#{updateTime},#{password},#{username},#{avatar})
+    </insert>
+
+    <!--修改用户信息-->
+    <update id="updateUserByUserId" parameterType="com.dgut.entity.User">
+        update sale_system_dj.user set update_time=#{updateTime},password=#{password},username=#{username},avatar=#{avatar} where user_id=#{userId}
+    </update>
+
+    <!--根据uid删除一个用户-->
+    <delete id="deleteUserByUserId" parameterType="int">
+        delete from sale_system_dj.user where user_id=#{userId}
+    </delete>
+
+</mapper>

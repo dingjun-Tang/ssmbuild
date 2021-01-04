@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--1、namespace=绑定一个对应的Mapper接口！！！-->
+<mapper namespace="com.dgut.mapper.ContractMapper">
+
+
+    <!--查询所有合同-->
+    <select id="getContractList" resultType="com.dgut.entity.Contract">
+        select * from sale_system_dj.contract
+    </select>
+
+    <!--根据ID查询合同-->
+    <select id="getContractByContractId" parameterType="int" resultType="com.dgut.entity.Contract">
+        select * from sale_system_dj.contract where contract_id = #{contractId}
+    </select>
+
+    <!--增加一个合同-->
+    <insert id="addContract" parameterType="com.dgut.entity.Contract">
+        insert into sale_system_dj.contract
+        (contract_id, create_time, update_time, contract_name, contract_no, first_party, second_party, status)
+            value (#{contractId},#{createTime},#{updateTime},#{contractName},#{contractNo},#{firstParty},#{secondParty},#{status});
+    </insert>
+
+    <!--修改合同信息-->
+    <update id="updateContractByContractId" parameterType="com.dgut.entity.Contract">
+        update sale_system_dj.contract set contract_name=#{contractName},contract_no=#{contractNo},first_party=#{firstParty},second_party=#{secondParty},status=#{status},update_time=#{updateTime} where contract_id=#{contractId}
+    </update>
+
+    <!--根据ID删除一个合同-->
+    <delete id="deleteContractByContractId" parameterType="int">
+        delete from sale_system_dj.contract where contract_id = #{contractId}
+    </delete>
+
+</mapper>
