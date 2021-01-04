@@ -4,22 +4,21 @@ package com.dgut.controller;
 import com.dgut.entity.Customer;
 import com.dgut.service.CustomerService;
 import com.dgut.util.Result;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/customer")
 public class CustomerController {
 
-    @Resource
+    @Autowired
     private CustomerService customerService;
 
     //查询所有客户，不分页
-    @GetMapping("list")
+    @GetMapping("/customer")
     public Result getCustomerList(){
         List<Customer> customerList = customerService.getCustomerList();
         Map<String, Object> map = new HashMap<String, Object>();
@@ -28,8 +27,8 @@ public class CustomerController {
     }
 
     //根据customerId查询客户
-    @GetMapping("/search")
-    public Result getCustomerByCustomerId(@RequestParam Integer customerId){
+    @GetMapping("/customer/{customerId}")
+    public Result getCustomerByCustomerId(@PathVariable("customerId") Integer customerId){
         Customer customer = customerService.getCustomerByCustomerId(customerId);
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("customer", customer);
@@ -37,7 +36,7 @@ public class CustomerController {
     }
 
     //增加一个客户
-    @PostMapping("/add")
+    @PostMapping("/customer")
     public Result addCustomer(@RequestBody Customer customer){
         int i = customerService.addCustomer(customer);
         if(1 == i){
@@ -48,7 +47,7 @@ public class CustomerController {
     }
 
     //修改客户信息
-    @PostMapping("/update")
+    @PutMapping("/customer")
     public Result updateCustomerByCustomerId(@RequestBody Customer customer){
         int i = customerService.updateCustomerByCustomerId(customer);
         if (1 == i){
@@ -59,8 +58,8 @@ public class CustomerController {
     }
 
     //根据customerId删除一个客户信息
-    @PostMapping("/delete")
-    public Result deleteCustomerByCustomerId(@RequestParam Integer customerId){
+    @PostMapping("/customer/{customerId}")
+    public Result deleteCustomerByCustomerId(@PathVariable("customerId") Integer customerId){
         int i = customerService.deleteCustomerByCustomerId(customerId);
         if(1 == i){
             return Result.success();
