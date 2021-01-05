@@ -21,8 +21,8 @@
     <!--增加一个合同-->
     <insert id="addContract" parameterType="com.dgut.entity.Contract">
         insert into sale_system_dj.contract
-        (contract_id, create_time, update_time, contract_name, contract_no, first_party, second_party, status)
-            value (#{contractId},#{createTime},#{updateTime},#{contractName},#{contractNo},#{firstParty},#{secondParty},#{status});
+        (create_time, update_time, contract_name,  status)
+            value (NOW(),NOW(),#{contractName},0);
     </insert>
 
     <!--修改合同信息-->
